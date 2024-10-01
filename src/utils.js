@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export const setNewOffset = (card, mouseMoveDir = { x: 0, y: 0 }) => {
   const offsetLeft = card.offsetLeft - mouseMoveDir.x;
   const offsetTop = card.offsetTop - mouseMoveDir.y;
@@ -22,4 +23,13 @@ export const setZIndex = (selectedCard) => {
       card.style.zIndex = selectedCard.style.zIndex - 1;
     }
   });
+};
+
+export const bodyParser = (value) => {
+  try {
+    JSON.parse(value);
+    return JSON.parse(value);
+  } catch (error) {
+    return value;
+  }
 };
