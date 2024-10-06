@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { autoGrow, bodyParser, setNewOffset, setZIndex } from "../utils";
 import { db } from "../appwrite/databases";
 import Spinner from "../icons/Spinner";
 import DeleteButton from "./DeleteButton";
+import { NotesContext } from "../context/NoteContext";
 
 const NoteCard = ({ note }) => {
+  const { setSelectedNote } = useContext(NotesContext);
   const [saving, setSaving] = useState(false);
   const keyUpTimer = useRef(null);
 
@@ -33,6 +35,8 @@ const NoteCard = ({ note }) => {
 
       document.addEventListener("mousemove", mouseMove);
       document.addEventListener("mouseup", mouseUp);
+
+      setSelectedNote(note);
     }
   };
 

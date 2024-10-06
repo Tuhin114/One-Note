@@ -7,6 +7,7 @@ export const NotesContext = createContext();
 const NoteProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
 
   useEffect(() => {
     // Fetch notes on mount
@@ -28,7 +29,9 @@ const NoteProvider = ({ children }) => {
   // console.log("Fetched notes:", notes); // This might log [] initially
 
   return (
-    <NotesContext.Provider value={{ notes, setNotes }}>
+    <NotesContext.Provider
+      value={{ notes, setNotes, selectedNote, setSelectedNote }}
+    >
       {loading ? (
         <div
           style={{
