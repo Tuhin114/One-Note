@@ -26,7 +26,7 @@ const Color = ({ color }) => {
         colors: JSON.stringify(color),
       });
     } catch (error) {
-      alert("You must select a note before changing colors");
+      alert("You must select a note before changing color");
     }
   };
 
